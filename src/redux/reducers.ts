@@ -1,6 +1,5 @@
 import { Action } from "redux";
 
-// todo this typing is messy
 export const initialState: State = {
   notes: {
     byId: {},

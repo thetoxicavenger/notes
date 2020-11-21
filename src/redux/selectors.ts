@@ -8,8 +8,12 @@ export function selectById({
   state: State;
   entityName: EntityName;
   id: string;
-}): State[EntityName]["byId"][Id] {
-  return state[entityName].byId[id];
+}): State[EntityName]["byId"][Id] | null {
+  try {
+    return state[entityName].byId[id];
+  } catch (_) {
+    return null;
+  }
 }
 
 export function selectAll({

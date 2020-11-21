@@ -4,7 +4,7 @@ import { NoteLink } from "../NoteLink";
 
 export interface NotesListProps {}
 
-export function NotesList({}: NotesListProps): React.ReactNode {
+export function NotesList({}: NotesListProps) {
   const notesIds = useSelector((state: State): Id[] => state.notes.allIds);
   return (
     <ul>

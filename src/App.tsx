@@ -1,28 +1,22 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { NotePage, NotesPage } from "./components";
 
-import {
-  createMuiTheme,
-  responsiveFontSizes,
-  ThemeProvider
-} from "@material-ui/core/styles";
-import purple from "@material-ui/core/colors/purple";
-import green from "@material-ui/core/colors/green";
-
-const theme = responsiveFontSizes(
-  createMuiTheme({
-    palette: {
-      primary: {
-        main: purple[500]
-      },
-      secondary: {
-        main: green[500]
-      }
-    }
-  })
-);
+// TODO routing's not up yet
 
 function App() {
-  return <ThemeProvider theme={theme}>Foooo</ThemeProvider>;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/notes">
+          <NotesPage />
+        </Route>
+        <Route path="/notes/:noteId">
+          <NotePage />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
