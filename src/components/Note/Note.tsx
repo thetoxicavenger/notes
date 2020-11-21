@@ -8,11 +8,10 @@ export interface NoteProps {}
 
 export function Note({}: NoteProps) {
   const { noteId } = useParams<{ noteId: string }>();
-  const {
-    title = "",
-    content = "",
-    tagIds = []
-  } = useSelector((state: State) => selectById({ state, entityName: "notes", id: noteId });
+  const { title = "", content = "", tagIds = [] } = useSelector(
+    (state: State): Note =>
+      selectById({ state, entityName: "notes", id: noteId })
+  );
   return (
     <>
       <h1>

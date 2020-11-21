@@ -1,25 +1,40 @@
-type Note = {
-  id: string;
+type Id = string;
+
+interface Note {
+  id: Id;
   title: string;
   content: string;
   tagIds: string[];
-};
+}
 
-type Tag = {
-  id: string;
+interface Tag {
+  id: Id;
   name: string;
-};
+}
 
-type Entities = Note | Tag;
-
-type Entity<K> = {
-  byId: Record<string, K>;
+interface Entity<K> {
+  byId: Record<Id, K>;
   allIds: string[];
-};
+}
 
 type EntityName = "notes" | "tags";
 
-type State = {
+type Entities = {
   notes: Entity<Note>;
   tags: Entity<Tag>;
 };
+
+type State = {
+  [K in EntityName]: Entities<K>;
+};
+
+namespace Notes {
+  interface ActionTypes {
+    SAVE: "SAVE";
+  }
+  interface ActionCreators {
+    save: (
+      payload: string
+    ) => { type: Notes.ActionTypes["SAVE"]; payload: string };
+  }
+}

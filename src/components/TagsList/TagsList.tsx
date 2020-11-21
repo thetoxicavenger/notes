@@ -5,12 +5,16 @@ export interface TagsListProps {
   tagIds: string[];
 }
 
-export function TagsList({ tagIds = [] }: TagsListProps): React.ReactNode {
+export function TagsList({ tagIds = [] }: TagsListProps) {
   return (
-    <>
-      {tagIds.map(tagId => (
-        <Tag id={tagId} />
-      ))}
-    </>
+    <ul>
+      {tagIds.map((tagId) => {
+        return (
+          <li>
+            <Tag key={tagId} id={tagId} />
+          </li>
+        );
+      })}
+    </ul>
   );
 }

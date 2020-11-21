@@ -1,15 +1,16 @@
 import { Action } from "redux";
 
-const entities = ["notes", "tags"];
-const initialState: State = entities.reduce((acc, entity) => {
-  return {
-    ...acc,
-    [entity]: {
-      byId: {},
-      allIds: []
-    }
-  };
-}, {});
+// todo this typing is messy
+export const initialState: State = {
+  notes: {
+    byId: {},
+    allIds: [],
+  },
+  tags: {
+    byId: {},
+    allIds: [],
+  },
+};
 
 export function reducer(state: State = initialState, action: Action) {
   switch (action.type) {

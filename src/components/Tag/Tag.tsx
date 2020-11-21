@@ -3,15 +3,15 @@ import { useSelector } from "react-redux";
 import { selectById } from "../../redux/selectors";
 
 export interface TagProps {
-  id: string;
+  id: Id;
 }
 
-export function Tag({ id = "" }: TagProps): React.ReactNode {
-  const { name } = useSelector(state =>
+export function Tag({ id = "" }: TagProps) {
+  const { name } = useSelector((state: State) =>
     selectById({
       state,
       entityName: "tags",
-      id
+      id,
     })
   );
   return (
